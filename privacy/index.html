@@ -8,6 +8,7 @@
   <link rel="canonical" href="https://imagemetadataremover.tools/privacy/">
   <link rel="icon" href="../favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="../styles.css">
+  <script src="https://analytics.ahrefs.com/analytics.js" data-key="3HFCD3iN6Rl4ziVeqMb22g" async></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -25,15 +26,16 @@
     <article class="format-detail">
       <p class="eyebrow">How the tool works</p>
       <h1>Privacy and limitations</h1>
-      <p>Image Metadata Remover is a static website. When you select a supported image, your browser decodes it and creates a new copy using its built-in image and canvas APIs. The selected image is not sent to an image-processing server.</p>
+      <p>Image Metadata Remover is a static website. Its image-processing code decodes a supported image in your browser and creates a new copy using built-in image and canvas APIs; that code does not send the image to an image-processing server. The site also loads Ahrefs Analytics on every page.</p>
       <h2>What the site does and does not collect</h2>
-      <p>The site code does not upload or store selected photos, set analytics cookies, or use third-party analytics, advertising, fonts, or processing libraries. The image is handled in the current browser tab and the tool does not write it to a site account or database.</p>
+      <p>Ahrefs Analytics is a third-party script that may collect visit and browser usage information under Ahrefs’ own policies. It runs in the page context, so it has access to page content and browser events; this site does not intentionally send selected images to Ahrefs, but it cannot guarantee that third-party page code is unable to access a selected file. If you need strict isolation from third-party scripts, do not use this page with sensitive images.</p>
+      <p>The site does not use advertising, third-party fonts, or third-party image-processing libraries. The image-processing code does not write selected files to a site account or database. Depending on your location, analytics may require consent or other disclosures; review the rules that apply before publishing.</p>
       <p>Like any website, the static host receives ordinary requests to serve the page and its assets. The hosting provider may process connection data such as IP address or browser details in server logs under its own policies. This is separate from the image selected in the tool; check your host’s privacy terms for details.</p>
       <h2>Supported formats and quality</h2>
       <ul>
         <li>JPEG and WebP are re-encoded by the browser. Re-encoding can reduce image quality; the quality slider controls the requested output quality.</li>
         <li>PNG output is lossless for the image pixels and preserves transparency.</li>
-        <li>HEIC and HEIF are not supported. They are rejected and are not uploaded or converted by this site.</li>
+        <li>HEIC and HEIF are not supported. The image-processing tool rejects them and does not convert them.</li>
         <li>Your browser must be able to decode and export the selected format. The tool has a 20 MB file limit and a 40-megapixel processing limit.</li>
       </ul>
       <h2>What metadata removal means</h2>
@@ -44,7 +46,7 @@
   </main>
   <footer class="site-footer">
     <a class="brand" href="/">Image Metadata Remover</a>
-    <p>Private image metadata remover. Your files stay on your device.</p>
+    <p>Local image processing. Ahrefs Analytics disclosed in this privacy page.</p>
     <a href="/">Home</a>
     <span class="footer-formats">JPEG · PNG · WebP</span>
   </footer>
