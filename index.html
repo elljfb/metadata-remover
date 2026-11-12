@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Remove metadata from photos in your browser. This free image metadata remover processes JPEG, PNG and WebP files on your device—no upload required.">
+  <meta name="theme-color" content="#f4f6f8">
+  <title>Image Metadata Remover — Remove EXIF Data Privately</title>
+  <link rel="canonical" href="https://imagemetadataremover.tools/">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="styles.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is EXIF data?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "EXIF (Exchangeable Image File Format) is information saved inside many photos by a camera or phone. It may include the date and time a photo was taken, camera settings, device model, and sometimes GPS location."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does removing metadata reduce image quality?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "PNG output is lossless. JPEG and WebP are re-encoded by your browser and may lose some quality; choose a higher quality setting to reduce that change. Your original file is not altered."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Are my photos uploaded or stored?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. The image is decoded and re-encoded locally in your browser. This site does not send the selected image to an image-processing server."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I remove metadata from iPhone photos?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "JPEG and PNG photos from an iPhone are supported. Many newer iPhone photos use HEIC / HEIF, which this tool cannot process. We do not accept those files or upload them for conversion."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Will this remove location and GPS data?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The clean output is newly created from the image pixels, so the original embedded EXIF and GPS fields are not carried over. The image’s visible content is retained."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does this tool support HEIC?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. HEIC / HEIF decoding and encoding are not included. The tool supports JPEG, PNG, and WebP only when your browser can decode and encode them."
+        }
+      }
+    ]
+  }
+  </script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <a class="brand" href="/" aria-label="Image Metadata Remover home">
+      <span>Image Metadata Remover</span>
+    </a>
+    <nav aria-label="Main navigation">
+      <a href="#how-it-works">How it works</a>
+      <a href="#formats">Formats</a>
+      <a href="#faqs">FAQs</a>
+      <a href="/privacy/">Privacy</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero">
+      <p class="eyebrow"><span class="privacy-dot"></span> Private by design · No upload</p>
+      <h1>Image Metadata Remover</h1>
+      <p class="hero-copy">Remove EXIF, GPS, and other embedded photo metadata in your browser. Free to use, with no image upload.</p>
+    </section>
+
+    <section class="tool-card" id="tool" aria-labelledby="tool-heading">
+      <div class="tool-heading">
+        <div>
+          <p class="eyebrow">On-device image cleanup</p>
+          <h2 id="tool-heading">Remove metadata from an image</h2>
+        </div>
+        <span class="local-badge"><span aria-hidden="true">✓</span> Processed locally</span>
+      </div>
+
+      <label class="drop-zone" id="drop-zone" for="image-file">
+        <span class="upload-icon" aria-hidden="true">
+          <svg viewBox="0 0 32 32" focusable="false"><path d="M16 21V5m0 0L9.5 11.5M16 5l6.5 6.5M6 20v6h20v-6"/></svg>
+        </span>
+        <span class="drop-title">Choose a photo or drop it here</span>
+        <span class="drop-caption">JPEG, PNG or WebP · Up to 20 MB</span>
+        <input id="image-file" type="file" accept="image/jpeg,image/png,image/webp,.jpg,.jpeg,.png,.webp">
+      </label>
+
+      <div class="file-summary" id="file-summary" hidden>
+        <div class="file-icon" aria-hidden="true">IMG</div>
+        <div class="file-details">
+          <strong id="file-name"></strong>
+          <span id="file-info"></span>
+        </div>
+        <button class="text-button" type="button" id="remove-file" aria-label="Remove selected image">Remove</button>
+      </div>
+
+      <div class="quality-control" id="quality-control" hidden>
+        <label for="quality">JPEG / WebP output quality <output id="quality-value" for="quality">92%</output></label>
+        <input id="quality" type="range" min="60" max="100" value="92">
+        <p>Higher quality usually means a larger file. PNG output is lossless and ignores this setting.</p>
+      </div>
+
+      <button class="primary-button" type="button" id="clean-button" disabled>Remove metadata</button>
+      <p class="status-message" id="status-message" role="status" aria-live="polite"></p>
+      <p class="privacy-note">Processed in this tab, never uploaded. Your original stays unchanged.</p>
+    </section>
+
+    <section class="trust-strip" aria-label="Privacy and file handling">
+      <div><strong>Private by default</strong><span>Files stay on your device</span></div>
+      <div><strong>Metadata removed</strong><span>EXIF, GPS, and embedded previews</span></div>
+      <div><strong>Original preserved</strong><span>Download a separate clean copy</span></div>
+    </section>
+
+    <section class="content-section" id="how-it-works">
+      <div class="section-intro">
+        <p class="eyebrow">A safer share in seconds</p>
+        <h2>Clean your photo before you share it</h2>
+        <p>Phones and cameras can save personal details inside an image. This browser-based EXIF data remover redraws the photo and creates a clean copy without sending it to a server.</p>
+      </div>
+      <div class="steps-grid">
+        <article class="step-card"><span class="step-number">01</span><h3>Select an image</h3><p>Choose a JPEG, PNG, or WebP file from your device. It stays in your browser.</p></article>
+        <article class="step-card"><span class="step-number">02</span><h3>Remove metadata</h3><p>Your browser creates a new image without embedded EXIF, GPS, XMP, or thumbnail data.</p></article>
+        <article class="step-card"><span class="step-number">03</span><h3>Save the clean copy</h3><p>Download and share the new file. Your original photo is never modified.</p></article>
+      </div>
+    </section>
+
+    <section class="example-section" aria-labelledby="example-heading">
+      <div class="example-copy">
+        <p class="eyebrow">Before and after</p>
+        <h2 id="example-heading">A clean copy, ready to share</h2>
+        <p>This illustration shows the kind of camera and location details a photo may contain—and a copy with its original metadata removed.</p>
+        <a class="secondary-button" href="/#tool">Remove metadata from a photo</a>
+      </div>
+      <figure class="example-figure">
+        <img src="images/before-after-image-metadata.png" alt="Illustration comparing an original landscape photo with camera and GPS metadata to a clean copy marked metadata removed." loading="lazy" decoding="async">
+        <figcaption>Illustrative example—not a scan or report of a selected image. This tool creates a clean copy but does not detect or display individual metadata fields.</figcaption>
+      </figure>
+    </section>
+
+    <section class="metadata-section">
+      <div class="metadata-copy">
+        <p class="eyebrow">What can a photo reveal?</p>
+        <h2>More than what’s in the picture</h2>
+        <p>Photo metadata can describe how and where an image was made. Available fields depend on the device, settings, and image format. Before sharing a photo, remove metadata from the copy you plan to post.</p>
+      </div>
+      <ul class="metadata-list">
+        <li><span class="metadata-symbol">◎</span><span><strong>Location</strong><small>GPS latitude, longitude, and altitude</small></span></li>
+        <li><span class="metadata-symbol">▧</span><span><strong>Device</strong><small>Make, model, lens, and sometimes serial number</small></span></li>
+        <li><span class="metadata-symbol">◷</span><span><strong>Capture details</strong><small>Date, time, exposure, ISO, aperture, and flash</small></span></li>
+        <li><span class="metadata-symbol">✎</span><span><strong>Editing details</strong><small>Software/version, author, copyright, and XMP</small></span></li>
+        <li><span class="metadata-symbol">▣</span><span><strong>Embedded previews</strong><small>Thumbnail images stored in a file</small></span></li>
+      </ul>
+    </section>
+
+    <section class="content-section formats-section" id="formats">
+      <div class="section-intro">
+        <p class="eyebrow">Supported formats</p>
+        <h2>Choose your image format</h2>
+        <p>JPEG, PNG, and WebP can be cleaned in this tool, subject to your browser’s image support. HEIC / HEIF is not supported here yet.</p>
+      </div>
+      <div class="format-grid">
+        <a class="format-card" href="/pages/jpeg-exif-remover/"><span class="format-label">.JPG · .JPEG</span><strong>JPEG EXIF remover</strong><span>Remove EXIF data from JPEG photos in your browser.</span><span class="card-link">Learn about JPEG cleanup →</span></a>
+        <a class="format-card" href="/pages/png-metadata-remover/"><span class="format-label">.PNG</span><strong>PNG metadata remover</strong><span>Clean PNG image metadata with lossless browser output.</span><span class="card-link">Learn about PNG cleanup →</span></a>
+        <a class="format-card" href="/pages/webp-metadata-remover/"><span class="format-label">.WEBP</span><strong>WebP metadata remover</strong><span>Strip embedded metadata from WebP images on your device.</span><span class="card-link">Learn about WebP cleanup →</span></a>
+        <a class="format-card format-card-muted" href="/pages/heic-metadata-remover/"><span class="format-label">.HEIC · .HEIF</span><strong>HEIC metadata remover</strong><span>HEIC files are not supported by this tool. We explain what you can do instead.</span><span class="card-link">HEIC support details →</span></a>
+      </div>
+    </section>
+
+    <section class="guides-section">
+      <div class="section-intro">
+        <p class="eyebrow">Privacy guides</p>
+        <h2>Know what you’re sharing</h2>
+      </div>
+      <div class="guide-links">
+        <a href="/guides/check-photo-metadata/">How to check what metadata is in a photo <span>→</span></a>
+        <a href="/guides/remove-location-from-photos/">How to remove location data from photos before sharing <span>→</span></a>
+        <a href="/guides/is-it-safe-to-remove-exif/">Is it safe to remove EXIF data? <span>→</span></a>
+        <a href="/guides/social-media-metadata/">Do WhatsApp, Instagram, and Facebook remove metadata? <span>→</span></a>
+        <a href="/guides/what-is-exif-data/">What is EXIF data and why does it matter? <span>→</span></a>
+        <a href="/guides/marketplace-photo-privacy/">Selling on Vinted, eBay, or Facebook Marketplace? <span>→</span></a>
+      </div>
+    </section>
+
+    <section class="faq-section" id="faqs">
+      <div class="section-intro">
+        <p class="eyebrow">Frequently asked questions</p>
+        <h2>Image metadata, explained</h2>
+      </div>
+      <div class="faq-list">
+        <details><summary>What is EXIF data?</summary><p>EXIF (Exchangeable Image File Format) is information saved inside many photos by a camera or phone. It may include the date and time a photo was taken, camera settings, device model, and sometimes GPS location.</p></details>
+        <details><summary>Does removing metadata reduce image quality?</summary><p>PNG output is lossless. JPEG and WebP are re-encoded by your browser and may lose some quality; choose a higher quality setting to reduce that change. Your original file is not altered.</p></details>
+        <details><summary>Are my photos uploaded or stored?</summary><p>No. The image is decoded and re-encoded locally in your browser. This site does not send the selected image to an image-processing server.</p></details>
+        <details><summary>Can I remove metadata from iPhone photos?</summary><p>JPEG and PNG photos from an iPhone are supported. Many newer iPhone photos use HEIC / HEIF, which this tool cannot process. We do not accept those files or upload them for conversion.</p></details>
+        <details><summary>Will this remove location and GPS data?</summary><p>The clean output is newly created from the image pixels, so the original embedded EXIF and GPS fields are not carried over. The image’s visible content is retained.</p></details>
+        <details><summary>Does this tool support HEIC?</summary><p>No. HEIC / HEIF decoding and encoding are not included. The tool supports JPEG, PNG, and WebP only when your browser can decode and encode them.</p></details>
+      </div>
+    </section>
+
+    <section class="social-note">
+      <p class="eyebrow">Sharing online?</p>
+      <h2>Don’t rely on a platform to protect your photo metadata.</h2>
+      <p>Social apps may resize, recompress, or remove some metadata, but their behavior can vary by service, upload method, and change over time. Make a clean copy before posting if privacy matters.</p>
+      <a class="secondary-button" href="/guides/social-media-metadata/">Read the sharing guide</a>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <a class="brand" href="/"><span>Image Metadata Remover</span></a>
+    <p>Private image metadata remover. Your files stay on your device.</p>
+    <a href="/privacy/">Privacy &amp; limitations</a>
+    <span class="footer-formats">JPEG · PNG · WebP</span>
+  </footer>
+</body>
+</html>
