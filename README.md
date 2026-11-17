@@ -11,4 +11,6 @@ A dependency-free static image metadata remover. Host this folder on a static we
 
 The tool removes the original embedded metadata by drawing the image into a browser canvas and exporting a new image. This does not remove identifying details visible in the pixels. No remote fonts, processing libraries, or image-processing services are used. See `privacy/index.html` for the site privacy disclosure.
 
+The photo metadata viewer is available at `/metadata-viewer/`. It reads JPEG, PNG, and WebP files locally and displays common EXIF fields while detecting selected metadata blocks. Its results are not a complete forensic inventory; unsupported and proprietary fields may not be shown.
+
 Format-specific pages are in `pages/`, privacy guides are in `guides/`, and site privacy/limitations are in `privacy/index.html`. The root `favicon.ico`, `robots.txt`, and `sitemap.xml` are referenced for the production domain. Page canonical URLs use `https://imagemetadataremover.tools/`; publish the folder at that domain or update those URLs before launch.

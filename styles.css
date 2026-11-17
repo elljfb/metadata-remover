@@ -315,6 +315,24 @@ h1 {
 .format-detail .primary-button { width: auto; min-height: 40px; padding: 0 14px; }
 .unsupported .callout { border-left-color: #8c7442; background: #f1eee6; }
 
+.metadata-viewer {
+  margin: 28px 0;
+  padding: 22px;
+  border: 1px solid var(--line);
+  background: var(--white);
+}
+.metadata-viewer h2 { margin-top: 0; }
+.metadata-file-label { display: block; margin-bottom: 7px; color: var(--ink); font-size: 12px; font-weight: 600; }
+.metadata-viewer input[type="file"] { display: block; width: 100%; padding: 11px; border: 1px solid var(--line); background: #fafbfd; font-size: 12px; }
+.metadata-results { margin-top: 22px; padding-top: 18px; border-top: 1px solid var(--line); }
+.metadata-results h3 { margin-bottom: 10px; font-size: 16px; }
+.metadata-results dl { display: grid; margin: 0; grid-template-columns: minmax(130px, .7fr) 1.3fr; }
+.metadata-results dt, .metadata-results dd { margin: 0; padding: 7px 9px; border-bottom: 1px solid #e8edf1; font-size: 12px; overflow-wrap: anywhere; }
+.metadata-results dt { color: var(--muted); font-weight: 600; }
+.metadata-results dd { color: var(--ink); }
+.metadata-results > p { margin: 14px 0; color: var(--muted); font-size: 11px; }
+.metadata-results .secondary-button { padding: 0 12px; }
+
 a:focus-visible, button:focus-visible, summary:focus-visible, input:focus-visible {
   outline: 2px solid #3977bd;
   outline-offset: 3px;
@@ -353,6 +371,10 @@ a:focus-visible, button:focus-visible, summary:focus-visible, input:focus-visibl
   .guides-section { grid-template-columns: 1fr; gap: 16px; }
   .guides-section .section-intro h2 { font-size: 25px; }
   .site-footer { flex-wrap: wrap; gap: 10px; padding: 16px 0; }
+  .metadata-viewer { padding: 16px; }
+  .metadata-results dl { grid-template-columns: 1fr; }
+  .metadata-results dt { padding-bottom: 2px; border-bottom: 0; }
+  .metadata-results dd { padding-top: 2px; }
 }
 @media (max-width: 500px) {
   .site-header { align-items: flex-start; flex-direction: column; justify-content: center; gap: 5px; padding: 9px 0; }

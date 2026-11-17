@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Learn what EXIF data is, what details a photo may contain, and why removing it before sharing can help protect your privacy.">
-  <title>What Is EXIF Data and Why Does It Matter?</title>
+  <meta name="description" content="Learn what EXIF data means, what a photo can reveal, how EXIF differs from metadata, and how to view or remove embedded camera and GPS details.">
+  <title>What Is EXIF Data? EXIF vs. Metadata Explained</title>
   <link rel="canonical" href="https://imagemetadataremover.tools/guides/what-is-exif-data/">
   <link rel="icon" href="../../favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="../../styles.css">
@@ -24,22 +24,32 @@
   <main class="subpage-main" id="main">
     <p class="breadcrumb"><a href="/">Home</a> / What is EXIF data?</p>
     <article class="format-detail">
-      <p class="eyebrow">Photo privacy guide</p>
-      <h1>What is EXIF data and why does it matter?</h1>
-      <p>EXIF (Exchangeable Image File Format) is a set of details that a camera or phone may store in an image file when a photo is taken. It describes the image and how it was captured; it is separate from the visible pixels that make up the picture.</p>
-      <h2>What can EXIF data include?</h2>
+      <p class="eyebrow">Photo metadata explained</p>
+      <h1>What is EXIF data?</h1>
+      <p><strong>EXIF data</strong> is information saved inside an image file by a camera, phone, or editing app. EXIF stands for <strong>Exchangeable Image File Format</strong>. Despite the name, EXIF is not the picture format itself: it is a specification for recording information about an image, such as when and how it was captured. The information is separate from the visible pixels.</p>
+      <p>A useful way to think about it is that the pixels are the picture you see, while metadata is a set of notes stored with the file. Some notes describe the camera and capture settings; others can describe location, ownership, or editing. A photo can look normal even when it contains details that are not visible on screen.</p>
+      <h2>What information can EXIF contain?</h2>
       <ul>
-        <li>Capture date and time, exposure, ISO, aperture, and flash settings.</li>
-        <li>Camera or phone make and model, lens information, and sometimes a device serial number.</li>
-        <li>GPS latitude, longitude, and altitude, if location tagging was enabled.</li>
-        <li>Editing software, author or copyright information, and other metadata such as XMP.</li>
-        <li>An embedded thumbnail or preview image.</li>
+        <li><strong>When the photo was taken:</strong> a camera may record the capture date and time in a field such as <code>DateTimeOriginal</code>. This is not necessarily the same as the file’s created or modified date. Some files do not record a time-zone offset, so the timestamp alone may not establish the local time.</li>
+        <li><strong>How it was captured:</strong> fields can describe exposure time, aperture (f-number), ISO, focal length, flash, and metering. These details are useful to photographers but may also reveal the equipment or settings used.</li>
+        <li><strong>Which device was used:</strong> camera make and model, lens information, and sometimes more specific device identifiers. A device model is more common than a unique serial number; the exact fields vary.</li>
+        <li><strong>Where it was taken:</strong> GPS latitude and longitude, and sometimes altitude or direction, if the camera or phone recorded location. GPS data is not present in every photo.</li>
+        <li><strong>How the file was handled:</strong> orientation, editing software, copyright or author fields, and sometimes an embedded thumbnail or preview.</li>
       </ul>
-      <p>Not every photo contains every field. The available information depends on the device, camera settings, file format, and editing or sharing steps.</p>
-      <h2>Why should you care about photo metadata?</h2>
-      <p>Location and capture details can reveal where or when a photo was made, while device and editing details can disclose information you did not intend to share. That can matter when posting publicly, listing an item for sale, or sharing images of your home or routine.</p>
-      <p>Removing metadata helps reduce those embedded details, but it does not make a photo anonymous. Addresses, faces, documents, reflections, and other clues visible in the image remain. Review the picture itself before sharing.</p>
-      <a class="primary-button" href="/#tool">Remove metadata in your browser</a>
+      <p>Not every photo has all—or any—of these fields. What is recorded depends on the device, camera settings, file type, and editing or sharing steps. A screenshot, export, or social-media download may have different metadata from the original camera file.</p>
+      <h2>Is EXIF data the same as metadata?</h2>
+      <p><strong>No. Metadata is the general term for information about a file; EXIF is one kind of image metadata.</strong> A photo may also contain information in IPTC (often used for captions, keywords, and creator or rights details), XMP (a flexible metadata format used by many editing applications), and file-format-specific properties. Some information may be repeated in more than one place, and the values do not always agree. People sometimes use “EXIF” casually to mean all photo metadata, but the terms are not exact synonyms.</p>
+      <p>Metadata can also exist outside the image file—for example, in a catalog or sidecar file managed by a photo application. A viewer that reads one JPEG, PNG, or WebP file cannot see information stored separately in another application or file.</p>
+      <h2>What does the EXIF specification define?</h2>
+      <p>The EXIF specification describes how common image and camera details are represented as named fields, often called tags, and how compatible software can interpret them. For example, an EXIF reader may show tags for the camera make, capture time, exposure, or GPS position. The tag’s presence does not mean every file has a useful value for it. A blank field, a missing tag, or a value of zero can mean different things depending on the tag and the software.</p>
+      <h2>Is EXIF an image file format?</h2>
+      <p>EXIF is not another image format like JPEG, PNG, or WebP. It is metadata stored alongside image data. JPEG files commonly carry EXIF in an application segment; PNG and WebP can also carry EXIF in their own metadata chunks. A format or app may support only some metadata types, and some software removes or rewrites metadata when it exports a new image. A JPEG photo can contain EXIF, but a JPEG image does not necessarily contain every EXIF field.</p>
+      <h2>Why check EXIF before sharing a photo?</h2>
+      <p>Location and capture details can reveal where or when a photo was made. Device or editing information may also disclose details you did not intend to share. That can matter when posting publicly, selling an item, or sharing images of your home, workplace, or routine. A GPS coordinate may point to a precise spot, so treat it as private information if the image is not meant to reveal your location.</p>
+      <p>Do not assume a website or messaging app always removes metadata. Services may resize, recompress, or otherwise transform images, but the result can vary by service, feature, and upload method. If the details matter, inspect the exact copy you plan to share rather than relying on a platform’s usual behavior. See our guide to <a href="/guides/social-media-metadata/">photo metadata on social media</a>.</p>
+      <h2>How can I view or remove EXIF data?</h2>
+      <p>Open the photo’s information or properties panel on your device, or use a metadata viewer that reads the image file. Our <a href="/metadata-viewer/">photo metadata viewer</a> displays common EXIF fields in JPEG, PNG, and WebP images and detects selected other metadata blocks. It is not a complete audit, and a result with no fields does not prove that no metadata is present. The page also loads Ahrefs Analytics; review the <a href="/privacy/">privacy disclosure</a> before selecting sensitive images.</p>
+      <p>If you want to share a cleaned copy, the <a href="/#tool">metadata remover</a> redraws a supported image in your browser. The original file stays unchanged. PNG output is lossless for image pixels; JPEG and WebP are re-encoded and may lose some quality. Metadata removal does not make a photo anonymous: addresses, faces, documents, reflections, and other clues visible in the image remain. Review the picture itself before sharing, and read <a href="/guides/is-it-safe-to-remove-exif/">what to know before removing EXIF data</a>.</p>
     </article>
   </main>
   <footer class="site-footer">

@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="View common EXIF, GPS, camera, and other metadata in a JPEG, PNG, or WebP photo. The viewer reads images locally; review our analytics privacy disclosure before selecting sensitive files.">
+  <meta name="theme-color" content="#f4f6f8">
+  <title>Photo Metadata Viewer — View EXIF and GPS Data</title>
+  <link rel="canonical" href="https://imagemetadataremover.tools/metadata-viewer/">
+  <link rel="icon" href="../favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="../styles.css">
+  <script src="../metadata-viewer.js" defer></script>
+  <script src="https://analytics.ahrefs.com/analytics.js" data-key="3HFCD3iN6Rl4ziVeqMb22g" async></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <a class="brand" href="/">Image Metadata Remover</a>
+    <nav aria-label="Main navigation">
+      <a href="/">Remove metadata</a>
+      <a href="/guides/check-photo-metadata/">How to check</a>
+      <a href="/privacy/">Privacy</a>
+    </nav>
+  </header>
+  <main class="subpage-main" id="main">
+    <p class="breadcrumb"><a href="/">Home</a> / Photo metadata viewer</p>
+    <article class="format-detail">
+      <p class="eyebrow">Free, browser-based tool</p>
+      <h1>Photo metadata viewer</h1>
+      <p>View common EXIF details in a photo, including its camera, capture time, and GPS coordinates when present. Choose a JPEG, PNG, or WebP image to inspect it on this device.</p>
+      <section class="metadata-viewer" aria-labelledby="viewer-heading">
+        <h2 id="viewer-heading">View photo metadata</h2>
+        <label class="metadata-file-label" for="metadata-file">Choose a JPEG, PNG, or WebP image (up to 20 MB)</label>
+        <input id="metadata-file" type="file" accept="image/jpeg,image/png,image/webp,.jpg,.jpeg,.png,.webp">
+        <div class="file-summary" id="metadata-file-summary" hidden>
+          <div class="file-icon" aria-hidden="true">IMG</div>
+          <div class="file-details">
+            <strong id="metadata-file-name"></strong>
+            <span id="metadata-file-info"></span>
+          </div>
+          <button class="text-button" type="button" id="remove-metadata-file">Remove</button>
+        </div>
+        <button class="primary-button" type="button" id="inspect-button" disabled>View photo metadata</button>
+        <p class="status-message" id="metadata-status" role="status" aria-live="polite"></p>
+        <p class="privacy-note">The viewer code reads the image in this tab and does not upload it. This page also loads Ahrefs Analytics; see <a href="/privacy/">Privacy &amp; limitations</a> before selecting a sensitive image.</p>
+        <div id="metadata-results" class="metadata-results" hidden>
+          <h3>Metadata found</h3>
+          <dl id="metadata-result-rows"></dl>
+          <p>Viewer coverage is limited to common metadata blocks and fields. A result with no fields does not prove that the file contains no other metadata.</p>
+          <a class="secondary-button" href="/">Remove metadata from a copy</a>
+        </div>
+      </section>
+      <h2>What this viewer can read</h2>
+      <p>The viewer displays commonly used EXIF fields and detects selected XMP, IPTC, text, and color-profile blocks where they are commonly stored in JPEG, PNG, or WebP. Other fields, proprietary metadata, and some compressed text entries may not be shown. HEIC / HEIF is not supported.</p>
+      <p>For steps to check metadata with built-in device tools, see <a href="/guides/check-photo-metadata/">how to find metadata on a photo</a>. Learn <a href="/guides/what-is-exif-data/">what EXIF data is and how it differs from metadata</a>.</p>
+    </article>
+  </main>
+  <footer class="site-footer">
+    <a class="brand" href="/">Image Metadata Remover</a>
+    <p>Image metadata processing runs in your browser.</p>
+    <a href="/privacy/">Privacy &amp; limitations</a>
+    <span class="footer-formats">JPEG · PNG · WebP</span>
+  </footer>
+</body>
+</html>
